@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-[#F6F8FB]">
+    <header class="flex justify-between mx-20 mt-3 items-center">
+      <div class="w-60">
+        <img src="./assets/logo.png" alt="" />
+      </div>
+      <div class="flex gap-10">
+        <li>C/F</li>
+        <li>About</li>
+      </div>
+    </header>
+    <main class="mx-[10px] mt-10 md:mx-20 md:mt-10 lg:mx-[50px] lg:mt-13">
+      <div>
+        <div class="text-center flex flex-col gap-1">
+          <span class="text-5xl font-bold tracking-light"
+            >Weather made simple</span
+          >
+          <span class="text-lg tracking-tight text-gray-500"
+            >Search for a city and get the latest weather information</span
+          >
+        </div>
+        <div
+          class="flex justify-between mx-1 md:mx-[5%] lg:mx-[500px] bg-[#FFFFFF] py-1.5 px-3 rounded-full mt-7"
+        >
+          <div class="flex-1 flex gap-1 pl-2">
+            <button>🔍</button>
+            <input
+              type="text"
+              placeholder="Search for a city(e.g. Thimphu, Tokyo, London)"
+              class="w-full outline-none"
+            />
+          </div>
+          <button
+            class="bg-[#3B82F6] rounded-full py-2 px-6 text-white hover:bg-#2563EB"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="mx-[350px] h-[250px] bg-[#FFFFFF] rounded-lg mt-7 mb-7 flex">
+        <div class="w-[55%]">
+          <div class="p-[30px]">
+            <p class="text-2xl font-semibold">Thimphu</p>
+            <p>Bhutan</p>
+            <p>
+              <span>Day and Month</span>
+              <span> Time</span>
+            </p>
+          </div>
+          <div class="flex items-center gap-10 pb-2 pl-3">
+            <div class="w-35">
+              <img src="./assets/sun-cloud.png" alt="" />
+            </div>
+            <div>
+              <p class="text-4xl font-bold">18 Degree</p>
+              <p>Partly Cloudy</p>
+            </div>
+          </div>
+        </div>
+        <div class="border-l-[2px] border-gray-200 my-8 pl-11 py-3 flex">
+          <div class="flex flex-col justify-center gap-3 mr-[200px]">
+            <div class="flex items-center gap-2">
+              <div class="w-7">
+                <img src="./assets/humidity.svg" alt="" class="" />
+              </div>
+              <p class="text-gray-600">Humidity</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7">
+                <img src="./assets/wind.svg" alt="" class="" />
+              </div>
+              <p class="text-gray-600">Wind</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7">
+                <img src="./assets/temperature.svg" alt="" class="" />
+              </div>
+              <p class="text-gray-600">Feels like</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-7">
+                <img src="./assets/pressure.svg" alt="" class="" />
+              </div>
+              <p class="text-gray-600">Pressure</p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center gap-4">
+            <p>68%</p>
+            <p>68%</p>
+            <p>68%</p>
+            <p>68%</p>
+          </div>
+        </div>
+      </div>
+      <div class="mx-[350px]">
+        <h1 class="mb-6 text-xl font-bold tracking-light">5 Day Forecast</h1>
+        <div
+          class="grid grid-cols-5 auto-rows-[190px] w-full justify-between gap-2"
+        >
+          <div
+            class="bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center"
+          >
+            <p class="font-bold">Mon</p>
+            <p>4 Aug</p>
+            <div class="w-17"><img src="./assets/sun-cloud.png" alt="" /></div>
+            <p>18 degree</p>
+            <p>Partially Cloudy</p>
+          </div>
+          <div
+            class="bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center"
+          >
+            <p class="font-bold">Mon</p>
+            <p>4 Aug</p>
+            <div class="w-17"><img src="./assets/sun.png" alt="" /></div>
+            <p>18 degree</p>
+            <p>Partially Cloudy</p>
+          </div>
+          <div
+            class="bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center"
+          >
+            <p class="font-bold">Mon</p>
+            <p>4 Aug</p>
+            <div class="w-17"><img src="./assets/rain.png" alt="" /></div>
+            <p>18 degree</p>
+            <p>Partially Cloudy</p>
+          </div>
+          <div
+            class="bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center"
+          >
+            <p class="font-bold">Mon</p>
+            <p>4 Aug</p>
+            <div class="w-17"><img src="./assets/sun-cloud.png" alt="" /></div>
+            <p>18 degree</p>
+            <p>Partially Cloudy</p>
+          </div>
+          <div
+            class="bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center"
+          >
+            <p class="font-bold">Mon</p>
+            <p>4 Aug</p>
+            <div class="w-17"><img src="./assets/sun-cloud.png" alt="" /></div>
+            <p>18 degree</p>
+            <p>Partially Cloudy</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
