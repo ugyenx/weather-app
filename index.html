@@ -2,11 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
+
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
@@ -30,23 +26,28 @@
             >Search for a city and get the latest weather information</span
           >
         </div>
-        <div
+
+        <form
+          id="searchForm"
           class="flex justify-between mx-1 md:mx-[5%] lg:mx-[500px] bg-[#FFFFFF] py-1.5 px-3 rounded-full mt-7"
         >
+          <button>🔍</button>
+
           <div class="flex-1 flex gap-1 pl-2">
-            <button>🔍</button>
             <input
+              id="cityInput"
               type="text"
               placeholder="Search for a city(e.g. Thimphu, Tokyo, London)"
               class="w-full outline-none"
             />
           </div>
           <button
+            type="submit"
             class="bg-[#3B82F6] rounded-full py-2 px-6 text-white hover:bg-#2563EB"
           >
             Search
           </button>
-        </div>
+        </form>
       </div>
       <div class="mx-[350px] h-[250px] bg-[#FFFFFF] rounded-lg mt-7 mb-7 flex">
         <div class="w-[55%]">
@@ -156,5 +157,6 @@
         </div>
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
