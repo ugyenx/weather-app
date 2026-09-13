@@ -8,6 +8,8 @@ const leftContainer = document.querySelector("#left-container");
 const weatherDescription = document.querySelector("#weather-description");
 const weatherIcon = document.querySelector("#weather-icon");
 const otherInfo = document.querySelector("#other-info");
+const futureForecast = document.querySelector("#future");
+const mainContainer = document.querySelector("#main-container");
 
 //Defining States
 
@@ -16,6 +18,8 @@ let dailyInfo = null;
 let cityName = "";
 let country = "";
 let currentWeatherInfo;
+
+mainContainer.classList.add("hidden");
 
 searchForm.addEventListener("submit", handleSearch);
 
@@ -26,8 +30,6 @@ async function getCoordinates() {
   cityName = data.results[0].name;
   country = data.results[0].country;
 
-  console.log(cityName);
-  console.log(country);
   return data.results[0];
 }
 
@@ -42,7 +44,7 @@ async function handleSearch(event) {
       "&longitude=" +
       coordinate.longitude +
       "&timezone=auto" +
-      "&daily=weather_code,temperature_2m_max,temperature_2m_min,temperature_2m_mean&current=temperature_2m,rain,wind_speed_10m,pressure_msl,weather_code,relative_humidity_2m,apparent_temperature",
+      "&daily=weather_code,temperature_2m_max,temperature_2m_min,temperature_2m_mean&forecast_days=5&current=temperature_2m,rain,wind_speed_10m,pressure_msl,weather_code,relative_humidity_2m,apparent_temperature",
   );
   const data = await response.json();
   currentInfo = [data.current, data.current_units];
@@ -55,7 +57,13 @@ async function handleSearch(event) {
 // Render Ui
 
 function renderUi() {
+  mainContainer.classList.remove("hidden");
   //  Header Component Left Section -- City, Country And Time
+  futureForecast.innerHTML = "";
+  leftContainer.innerHTML = "";
+  otherInfo.innerHTML = "";
+  weatherIcon.innerHTML = "";
+  weatherDescription.innerHTML = "";
   const date = new Date(currentInfo[0].time);
   const day = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -109,4 +117,52 @@ function renderUi() {
   presssure.textContent = `${currentInfo?.[0].pressure_msl} hPa`;
 
   otherInfo.append(humidity, wind, apparentTemperature, presssure);
+
+  // 5 day weather informations
+  dailyInfo?.[0]?.time?.map((daily, index) => {
+    // futureForecast.innerHTML = "";
+    // Each Grid Element
+    const container = document.createElement("div");
+    container.className =
+      "bg-[#FFFFFF] rounded-lg flex flex-col justify-center gap-1 items-center";
+
+    // Formating day , date, and month from time
+    const date = new Date(daily);
+    const formatedDate = Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+    }).format(date);
+    const formatedDay = Intl.DateTimeFormat("en-US", {
+      weekday: "short",
+    }).format(date);
+    // Day
+    const day = document.createElement("p");
+    day.className = "font-bold tracking-light";
+    day.textContent = formatedDay;
+
+    // Date and Month
+    const dateMonth = document.createElement("p");
+    dateMonth.textContent = formatedDate;
+
+    //Weather Determined
+    const dailyWeatherInfo = getWeatherInfo(
+      dailyInfo?.[0]?.weather_code?.[index],
+    );
+
+    //Weather Icon
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "w-20";
+    const icon = document.createElement("img");
+    icon.src = dailyWeatherInfo?.icon;
+    imgContainer.append(icon);
+
+    //Temperature
+    const temperature = document.createElement("p");
+    temperature.textContent = `${dailyInfo?.[0]?.temperature_2m_mean?.[index]} °C`;
+    //Weather
+    const weather = document.createElement("p");
+    weather.textContent = dailyWeatherInfo?.description;
+    container.append(day, dateMonth, imgContainer, temperature, weather);
+    futureForecast.append(container);
+  });
 }
